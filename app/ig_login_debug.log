@@ -500,3 +500,301 @@ x-fb-connection-quality: EXCELLENT; q=0.9, rtt=10, rtx=1, c=18, mss=1392, tbw=38
 [2025-08-18 11:02:25] Login response body (first 500 chars):
 {"user":true,"userId":"59526406631","authenticated":true,"oneTapPrompt":true,"has_onboarded_to_text_post_app":false,"status":"ok"}
 [2025-08-18 11:02:25] Session ID: 59526406631%3A6WFHgHCaZdFiLJ%3A25%3AAYfrWjFoDgn_V7uS6iZcvWZM8NlG4TuSLbRITKV55A
+[2025-08-18 11:36:09] Received login request for username: alexcoleman.creatorshot, user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36, ip: 223.233.70.142
+[2025-08-18 11:36:09] Response headers:
+HTTP/2 200 
+set-cookie: csrftoken=Ltjst0sQ-qOivbdPkvvvy6; expires=Tue, 22-Sep-2026 09:36:07 GMT; Max-Age=34560000; path=/; domain=.instagram.com; secure; SameSite=None
+set-cookie: mid=aKL0BwALAAGOL9zXcPzzbLoOjOj3; expires=Tue, 22-Sep-2026 09:36:07 GMT; Max-Age=34560000; path=/; domain=.instagram.com; secure; httponly; SameSite=None
+accept-ch-lifetime: 4838400
+accept-ch: viewport-width,dpr,Sec-CH-Prefers-Color-Scheme,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Platform-Version,Sec-CH-UA-Model
+pragma: no-cache
+cache-control: private, no-cache, no-store, must-revalidate
+expires: Sat, 01 Jan 2000 00:00:00 GMT
+content-security-policy: default-src *.facebook.com *.fbcdn.net *.instagram.com blob:;script-src *.instagram.com static.cdninstagram.com *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-uAdsxCWI' blob: 'self' 'wasm-unsafe-eval' https://*.google-analytics.com https://translate.google.com https://apis.google.com https://accounts.google.com;style-src *.instagram.com static.cdninstagram.com data: blob: 'unsafe-inline' *.fbcdn.net *.facebook.com;connect-src *.instagram.com wss://edge-chat.instagram.com connect.facebook.net *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* ws://localhost:* blob: *.cdninstagram.com wss://*.instagram.com:* 'self';font-src *.instagram.com static.cdninstagram.com data: *.fbcdn.net *.intern.facebook.com *.facebook.com https://fonts.gstatic.com;img-src *.instagram.com *.facebook.com *.fbcdn.net data: *.cdninstagram.com *.whatsapp.net blob: *.fbsbx.com android-webview-video-poster: *.oculuscdn.com *.giphy.com *.tenor.co *.tenor.com www.googleadservices.com *.doubleclick.net *.google.com *.google.co.uk https://www.gstatic.com https://*.google-analytics.com;media-src *.facebook.com *.fbcdn.net *.instagram.com *.cdninstagram.com cdn.fbsbx.com lookaside.fbsbx.com data: blob: https://*.giphy.com *.tenor.co *.tenor.com;child-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;frame-src *.instagram.com *.facebook.com *.fbsbx.com fbsbx.com data: www.googleadservices.com *.doubleclick.net *.google.com *.google.co.uk;manifest-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;object-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;block-all-mixed-content;upgrade-insecure-requests;
+document-policy: include-js-call-stacks-in-crash-reports
+x-frame-options: DENY
+x-content-type-options: nosniff
+x-xss-protection: 0
+reporting-endpoints: coop_report="https://www.facebook.com/browser_reporting/coop/?minimize=0", default="https://www.instagram.com/error/ig_web_error_reports/?device_level=unknown&brsid=7539857037411243028&cpp=C3&cv=1026004733&st=1755509767880"
+report-to: {"max_age":2592000,"endpoints":[{"url":"https:\/\/www.facebook.com\/browser_reporting\/coop\/?minimize=0"}],"group":"coop_report","include_subdomains":true}, {"max_age":259200,"endpoints":[{"url":"https:\/\/www.instagram.com\/error\/ig_web_error_reports\/?device_level=unknown&brsid=7539857037411243028&cpp=C3&cv=1026004733&st=1755509767880"}]}
+cross-origin-opener-policy: same-origin-allow-popups
+vary: Sec-Fetch-Site, Sec-Fetch-Mode
+vary: Accept-Encoding
+origin-agent-cluster: ?1
+strict-transport-security: max-age=31536000; preload; includeSubDomains
+x-stack: www
+content-type: text/html; charset="utf-8"
+x-fb-debug: FWJKK4LMJpw6iViteKiaNMmED32su41lrZAcsDtYl/+SfL1v15qaTlCv8RtqNvXO9cSSrWxvH8XxOPbdfCMByQ==
+date: Mon, 18 Aug 2025 09:36:07 GMT
+alt-svc: h3=":443"; ma=86400
+x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=17, mss=1392, tbw=3820, tp=-1, tpl=-1, uplat=243, ullat=0
+
+
+[2025-08-18 11:36:09] Response body (first 500 chars):
+<!DOCTYPE html><html class="_9dls _ar44" lang="en" dir="ltr"><head><link data-default-icon="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" rel="icon" sizes="192x192" href="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" /><meta name="bingbot" content="noarchive" /><meta charset="utf-8" /><meta name="apple-mobile-web-app-status-bar-style" content="default" /><meta name="mobile-web-app-capable" content="yes" /><meta id="viewport" name="viewport" content="width=
+[2025-08-18 11:36:09] Found csrftoken in header: Ltjst0sQ-qOivbdPkvvvy6
+[2025-08-18 11:36:09] Using CSRF token: Ltjst0sQ-qOivbdPkvvvy6
+[2025-08-18 11:36:09] Login request headers:
+Array
+(
+    [0] => User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+    [1] => X-CSRFToken: Ltjst0sQ-qOivbdPkvvvy6
+    [2] => X-Requested-With: XMLHttpRequest
+    [3] => Referer: https://www.instagram.com/accounts/login/
+    [4] => Content-Type: application/x-www-form-urlencoded
+    [5] => Cookie: csrftoken=Ltjst0sQ-qOivbdPkvvvy6; mid=aKL0BwALAAGOL9zXcPzzbLoOjOj3
+)
+
+[2025-08-18 11:36:09] Login request post fields:
+username=alexcoleman.creatorshot&enc_password=%23PWD_INSTAGRAM_BROWSER%3A0%3A1755509769%3A7016272690&queryParams=%7B%7D&optIntoOneTap=false
+[2025-08-18 11:36:12] Login response headers:
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+ig-set-authorization: Bearer IGT:2:eyJkc191c2VyX2lkIjoiNTk1MjY0MDY2MzEiLCJzZXNzaW9uaWQiOiI1OTUyNjQwNjYzMSUzQUdpMmpEeTcyREhMaFRsJTNBMSUzQUFZZllFZ3lvdEVNZWt2eWdEeEJUa2RTenhQUm10cU00Z0RwUEkwZlc5dyJ9
+ig-set-password-encryption-key-id: 1
+ig-set-password-encryption-pub-key: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF3VkZGbFBHblBoMnN4Ykg4bWplTgpqNG9XL29XRkhUQitBYmVsT0R3SXBhOG1YNURCWTlaS3RNQ2JRWXc1cjhyMXdZYjJxbDQycmZ0REdIK1V4SG9sCkJnOW5SaThTTVQ1bEtYRzdpSEFIVDNVYWowUlpkNjVVYVd1ZnJhV2VQdnhQd3Ard1Urbm1ibENiK3ZNbTNnTHoKMDBLdS9Fblh4c2RiU3NEa3Z1NFZFK3JvU0hxdG5aTkJDY3I4UFk5UVprb3hyRzV3NHRPTWNCTlVJV0RycDBuTQpRVWk3YlczbEM5UThyT2FtdkR4L3ZDRWVBNjl3amY4REJPb0l4T2IrTklSb2I4WG9IcFR5QTljOUprdnNqQnFrCjJicHdkdmtzQVB3Z3B5Z2kyVUxnaGVVRTZVS3pzbEFtNnF2aEwzRmQxZnJ5dTl5TzlYb2JnRER2R3F2QWlETzQKZ1FJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+ig-set-x-mid: aKL0BwALAAGOL9zXcPzzbLoOjOj3
+x-ig-reload-proxy-request-info: {"request_index": 45, "view_name": "None.CAAIGAuthenticationThriftServer.async_as_view", "uuid": "87bd5724beae40f388453a5a76a2ad7b", "sanitized_path": "/accounts/caa_ig_authentication_thrift_server/"}
+cross-origin-opener-policy: same-origin-allow-popups;report-to="coop"
+x-fb-endpoint: 
+x-frame-options: SAMEORIGIN
+cache-control: private, no-cache, no-store, must-revalidate
+pragma: no-cache
+expires: Sat, 01 Jan 2000 00:00:00 GMT
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-xss-protection: 0
+ig-set-ig-u-ds-user-id: 59526406631
+ig-set-ig-u-rur: CCO
+cross-origin-embedder-policy-report-only: require-corp;report-to="coep"
+ig-set-password-encryption-web-key-id: 50
+ig-set-password-encryption-web-pub-key: 30f47bcd4d0a44801a87ef2ccf3cf8186ad5dac6230d8930c23777499aece350
+ig-set-password-encryption-web-key-version: 10
+x-robots-tag: noindex
+date: Mon, 18 Aug 2025 09:36:11 GMT
+vary: Accept-Language, Cookie
+content-language: en
+content-security-policy: report-uri https://www.instagram.com/security/csp_report/; default-src 'self' https://www.instagram.com; img-src data: blob: https://*.fbcdn.net https://*.instagram.com https://*.cdninstagram.com https://*.facebook.com https://*.fbsbx.com https://*.threads.net https://*.threads.com https://*.giphy.com; font-src data: https://*.fbcdn.net https://*.instagram.com https://*.cdninstagram.com; media-src 'self' blob: https://www.instagram.com https://*.cdninstagram.com https://*.fbcdn.net; manifest-src 'self' https://www.instagram.com; script-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://*.cdninstagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' https://*.www.instagram.com https://www.instagram.com 'unsafe-inline'; connect-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://graph.instagram.com https://*.graph.instagram.com https://i.instagram.com/graphql_www https://graphql.instagram.com https://*.cdninstagram.com https://api.instagram.com https://i.instagram.com https://*.i.instagram.com https://*.od.instagram.com https://i.threads.net https://i.threads.com https://*.od.threads.net https://*.od.threads.com wss://www.instagram.com wss://edge-chat.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net chrome-extension://boadgeojelhgndaghljhdicfkmllpafd blob:; worker-src 'self' blob: https://www.instagram.com; frame-src 'self' https://instagram.com https://www.instagram.com https://*.instagram.com https://staticxx.facebook.com https://www.facebook.com https://web.facebook.com https://connect.facebook.net https://m.facebook.com https://*.fbsbx.com; object-src 'none'; upgrade-insecure-requests
+report-to: {"group": "coep", "max_age": 86400, "endpoints": [{"url": "/security/coep_report/"}]},{"group": "coop", "max_age": 86400, "endpoints": [{"url": "/security/coop_report/"}]}
+cross-origin-resource-policy: cross-origin
+x-ig-push-state: c2
+x-ig-cache-control: cache
+x-aed: 522
+x-ig-request-elapsed-time-ms: 2646
+x-ig-peak-v2: 0
+x-ig-peak-time: 1
+x-ig-capacity-level: 2
+x-stack: distillery
+x-perf-stats: 65782723;30580;2641211
+set-cookie: sessionid=59526406631%3AGi2jDy72DHLhTl%3A1%3AAYfYEgyotEMekvygDxBTkdSzxPRmtqM4gDpPI0fW9w; Domain=.instagram.com; expires=Tue, 18-Aug-2026 09:36:11 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+set-cookie: ds_user_id=59526406631; Domain=.instagram.com; expires=Sun, 16-Nov-2025 09:36:11 GMT; Max-Age=7776000; Path=/; SameSite=None; Secure
+set-cookie: csrftoken=Ltjst0sQ-qOivbdPkvvvy6; Domain=.instagram.com; expires=Tue, 22-Sep-2026 09:36:11 GMT; Max-Age=34560000; Path=/; Secure
+set-cookie: ig_did=9132C9ED-9525-49C6-B36B-95614C94C30B; Domain=.instagram.com; expires=Tue, 18-Aug-2026 09:36:11 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+content-length: 130
+x-ig-origin-region: cco
+alt-svc: h3=":443"; ma=86400
+x-fb-connection-quality: EXCELLENT; q=0.9, rtt=15, rtx=0, c=16, mss=1392, tbw=3798, tp=-1, tpl=-1, uplat=2869, ullat=0
+
+
+[2025-08-18 11:36:12] Login response body (first 500 chars):
+{"user":true,"userId":"59526406631","authenticated":true,"oneTapPrompt":true,"has_onboarded_to_text_post_app":false,"status":"ok"}
+[2025-08-18 11:36:12] Session ID: 59526406631%3AGi2jDy72DHLhTl%3A1%3AAYfYEgyotEMekvygDxBTkdSzxPRmtqM4gDpPI0fW9w
+[2025-08-18 11:37:22] Received login request for username: alexcoleman.creatorshot, user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36, ip: 223.233.70.142
+[2025-08-18 11:37:22] Response headers:
+HTTP/2 200 
+set-cookie: csrftoken=5BN3xITpGBWWXqUOcAStDt; expires=Tue, 22-Sep-2026 09:37:21 GMT; Max-Age=34560000; path=/; domain=.instagram.com; secure; SameSite=None
+set-cookie: mid=aKL0UQALAAGgcDuPujFwBlFAPWDO; expires=Tue, 22-Sep-2026 09:37:21 GMT; Max-Age=34560000; path=/; domain=.instagram.com; secure; httponly; SameSite=None
+accept-ch-lifetime: 4838400
+accept-ch: viewport-width,dpr,Sec-CH-Prefers-Color-Scheme,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Platform-Version,Sec-CH-UA-Model
+pragma: no-cache
+cache-control: private, no-cache, no-store, must-revalidate
+expires: Sat, 01 Jan 2000 00:00:00 GMT
+content-security-policy: default-src *.facebook.com *.fbcdn.net *.instagram.com blob:;script-src *.instagram.com static.cdninstagram.com *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-b0yKoaQb' blob: 'self' 'wasm-unsafe-eval' https://*.google-analytics.com https://translate.google.com https://apis.google.com https://accounts.google.com;style-src *.instagram.com static.cdninstagram.com data: blob: 'unsafe-inline' *.fbcdn.net *.facebook.com;connect-src *.instagram.com wss://edge-chat.instagram.com connect.facebook.net *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* ws://localhost:* blob: *.cdninstagram.com wss://*.instagram.com:* 'self';font-src *.instagram.com static.cdninstagram.com data: *.fbcdn.net *.intern.facebook.com *.facebook.com https://fonts.gstatic.com;img-src *.instagram.com *.facebook.com *.fbcdn.net data: *.cdninstagram.com *.whatsapp.net blob: *.fbsbx.com android-webview-video-poster: *.oculuscdn.com *.giphy.com *.tenor.co *.tenor.com www.googleadservices.com *.doubleclick.net *.google.com *.google.co.uk https://www.gstatic.com https://*.google-analytics.com;media-src *.facebook.com *.fbcdn.net *.instagram.com *.cdninstagram.com cdn.fbsbx.com lookaside.fbsbx.com data: blob: https://*.giphy.com *.tenor.co *.tenor.com;child-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;frame-src *.instagram.com *.facebook.com *.fbsbx.com fbsbx.com data: www.googleadservices.com *.doubleclick.net *.google.com *.google.co.uk;manifest-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;object-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;block-all-mixed-content;upgrade-insecure-requests;
+document-policy: include-js-call-stacks-in-crash-reports
+x-frame-options: DENY
+x-content-type-options: nosniff
+x-xss-protection: 0
+reporting-endpoints: coop_report="https://www.facebook.com/browser_reporting/coop/?minimize=0", default="https://www.instagram.com/error/ig_web_error_reports/?device_level=unknown&brsid=7539857356212286890&cpp=C3&cv=1026004733&st=1755509841101"
+report-to: {"max_age":2592000,"endpoints":[{"url":"https:\/\/www.facebook.com\/browser_reporting\/coop\/?minimize=0"}],"group":"coop_report","include_subdomains":true}, {"max_age":259200,"endpoints":[{"url":"https:\/\/www.instagram.com\/error\/ig_web_error_reports\/?device_level=unknown&brsid=7539857356212286890&cpp=C3&cv=1026004733&st=1755509841101"}]}
+cross-origin-opener-policy: same-origin-allow-popups
+vary: Sec-Fetch-Site, Sec-Fetch-Mode
+vary: Accept-Encoding
+origin-agent-cluster: ?1
+strict-transport-security: max-age=31536000; preload; includeSubDomains
+x-stack: www
+content-type: text/html; charset="utf-8"
+x-fb-debug: Vtw02Ta4/2udAk+63ALF7f8G+rJQAaIQDrWxcXtRsyxavgzcHJKj6Xjazahi7Xd5YHfLDLj0euvALUIwVBpavw==
+date: Mon, 18 Aug 2025 09:37:21 GMT
+alt-svc: h3=":443"; ma=86400
+x-fb-connection-quality: EXCELLENT; q=0.9, rtt=9, rtx=0, c=16, mss=1392, tbw=3798, tp=-1, tpl=-1, uplat=243, ullat=0
+
+
+[2025-08-18 11:37:22] Response body (first 500 chars):
+<!DOCTYPE html><html class="_9dls _ar44" lang="en" dir="ltr"><head><link data-default-icon="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" rel="icon" sizes="192x192" href="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" /><meta name="bingbot" content="noarchive" /><meta charset="utf-8" /><meta name="apple-mobile-web-app-status-bar-style" content="default" /><meta name="mobile-web-app-capable" content="yes" /><meta id="viewport" name="viewport" content="width=
+[2025-08-18 11:37:22] Found csrftoken in header: 5BN3xITpGBWWXqUOcAStDt
+[2025-08-18 11:37:22] Using CSRF token: 5BN3xITpGBWWXqUOcAStDt
+[2025-08-18 11:37:22] Login request headers:
+Array
+(
+    [0] => User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+    [1] => X-CSRFToken: 5BN3xITpGBWWXqUOcAStDt
+    [2] => X-Requested-With: XMLHttpRequest
+    [3] => Referer: https://www.instagram.com/accounts/login/
+    [4] => Content-Type: application/x-www-form-urlencoded
+    [5] => Cookie: csrftoken=5BN3xITpGBWWXqUOcAStDt; mid=aKL0UQALAAGgcDuPujFwBlFAPWDO
+)
+
+[2025-08-18 11:37:22] Login request post fields:
+username=alexcoleman.creatorshot&enc_password=%23PWD_INSTAGRAM_BROWSER%3A0%3A1755509842%3A7016272690&queryParams=%7B%7D&optIntoOneTap=false
+[2025-08-18 11:37:25] Login response headers:
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+ig-set-authorization: Bearer IGT:2:eyJkc191c2VyX2lkIjoiNTk1MjY0MDY2MzEiLCJzZXNzaW9uaWQiOiI1OTUyNjQwNjYzMSUzQW5MSnRDU1NVUXJmOUMyJTNBNSUzQUFZZjlDckpUUUFsQThtb0hiTlpMb01kOURVclVSTUhTMlNLd1c4ekdsQSJ9
+ig-set-password-encryption-key-id: 1
+ig-set-password-encryption-pub-key: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF3VkZGbFBHblBoMnN4Ykg4bWplTgpqNG9XL29XRkhUQitBYmVsT0R3SXBhOG1YNURCWTlaS3RNQ2JRWXc1cjhyMXdZYjJxbDQycmZ0REdIK1V4SG9sCkJnOW5SaThTTVQ1bEtYRzdpSEFIVDNVYWowUlpkNjVVYVd1ZnJhV2VQdnhQd3Ard1Urbm1ibENiK3ZNbTNnTHoKMDBLdS9Fblh4c2RiU3NEa3Z1NFZFK3JvU0hxdG5aTkJDY3I4UFk5UVprb3hyRzV3NHRPTWNCTlVJV0RycDBuTQpRVWk3YlczbEM5UThyT2FtdkR4L3ZDRWVBNjl3amY4REJPb0l4T2IrTklSb2I4WG9IcFR5QTljOUprdnNqQnFrCjJicHdkdmtzQVB3Z3B5Z2kyVUxnaGVVRTZVS3pzbEFtNnF2aEwzRmQxZnJ5dTl5TzlYb2JnRER2R3F2QWlETzQKZ1FJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+ig-set-x-mid: aKL0UQALAAGgcDuPujFwBlFAPWDO
+x-ig-reload-proxy-request-info: {"request_index": 380, "view_name": "None.CAAIGAuthenticationThriftServer.async_as_view", "uuid": "e7324d22fac94ddfa32c1a06258a178b", "sanitized_path": "/accounts/caa_ig_authentication_thrift_server/"}
+cross-origin-opener-policy: same-origin-allow-popups;report-to="coop"
+x-fb-endpoint: 
+x-frame-options: SAMEORIGIN
+cache-control: private, no-cache, no-store, must-revalidate
+pragma: no-cache
+expires: Sat, 01 Jan 2000 00:00:00 GMT
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-xss-protection: 0
+ig-set-ig-u-ds-user-id: 59526406631
+ig-set-ig-u-rur: CCO
+cross-origin-embedder-policy-report-only: require-corp;report-to="coep"
+ig-set-password-encryption-web-key-id: 50
+ig-set-password-encryption-web-pub-key: 30f47bcd4d0a44801a87ef2ccf3cf8186ad5dac6230d8930c23777499aece350
+ig-set-password-encryption-web-key-version: 10
+x-robots-tag: noindex
+date: Mon, 18 Aug 2025 09:37:24 GMT
+vary: Accept-Language, Cookie
+content-language: en
+content-security-policy: report-uri https://www.instagram.com/security/csp_report/; default-src 'self' https://www.instagram.com; img-src data: blob: https://*.fbcdn.net https://*.instagram.com https://*.cdninstagram.com https://*.facebook.com https://*.fbsbx.com https://*.threads.net https://*.threads.com https://*.giphy.com; font-src data: https://*.fbcdn.net https://*.instagram.com https://*.cdninstagram.com; media-src 'self' blob: https://www.instagram.com https://*.cdninstagram.com https://*.fbcdn.net; manifest-src 'self' https://www.instagram.com; script-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://*.cdninstagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' https://*.www.instagram.com https://www.instagram.com 'unsafe-inline'; connect-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://graph.instagram.com https://*.graph.instagram.com https://i.instagram.com/graphql_www https://graphql.instagram.com https://*.cdninstagram.com https://api.instagram.com https://i.instagram.com https://*.i.instagram.com https://*.od.instagram.com https://i.threads.net https://i.threads.com https://*.od.threads.net https://*.od.threads.com wss://www.instagram.com wss://edge-chat.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net chrome-extension://boadgeojelhgndaghljhdicfkmllpafd blob:; worker-src 'self' blob: https://www.instagram.com; frame-src 'self' https://instagram.com https://www.instagram.com https://*.instagram.com https://staticxx.facebook.com https://www.facebook.com https://web.facebook.com https://connect.facebook.net https://m.facebook.com https://*.fbsbx.com; object-src 'none'; upgrade-insecure-requests
+report-to: {"group": "coep", "max_age": 86400, "endpoints": [{"url": "/security/coep_report/"}]},{"group": "coop", "max_age": 86400, "endpoints": [{"url": "/security/coop_report/"}]}
+cross-origin-resource-policy: cross-origin
+x-ig-push-state: c2
+x-ig-cache-control: cache
+x-aed: 522
+x-ig-request-elapsed-time-ms: 2479
+x-ig-peak-v2: 0
+x-ig-peak-time: 1
+x-ig-capacity-level: 2
+x-stack: distillery
+x-perf-stats: 74626631;35540;2474935
+set-cookie: sessionid=59526406631%3AnLJtCSSUQrf9C2%3A5%3AAYf9CrJTQAlA8moHbNZLoMd9DUrURMHS2SKwW8zGlA; Domain=.instagram.com; expires=Tue, 18-Aug-2026 09:37:24 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+set-cookie: ds_user_id=59526406631; Domain=.instagram.com; expires=Sun, 16-Nov-2025 09:37:24 GMT; Max-Age=7776000; Path=/; SameSite=None; Secure
+set-cookie: csrftoken=5BN3xITpGBWWXqUOcAStDt; Domain=.instagram.com; expires=Tue, 22-Sep-2026 09:37:24 GMT; Max-Age=34560000; Path=/; Secure
+set-cookie: ig_did=7EF48BAE-C948-4854-BF17-C7E59AB00D88; Domain=.instagram.com; expires=Tue, 18-Aug-2026 09:37:24 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+content-length: 130
+x-ig-origin-region: cco
+alt-svc: h3=":443"; ma=86400
+x-fb-connection-quality: EXCELLENT; q=0.9, rtt=8, rtx=0, c=16, mss=1392, tbw=3798, tp=-1, tpl=-1, uplat=2700, ullat=0
+
+
+[2025-08-18 11:37:25] Login response body (first 500 chars):
+{"user":true,"userId":"59526406631","authenticated":true,"oneTapPrompt":true,"has_onboarded_to_text_post_app":false,"status":"ok"}
+[2025-08-18 11:37:25] Session ID: 59526406631%3AnLJtCSSUQrf9C2%3A5%3AAYf9CrJTQAlA8moHbNZLoMd9DUrURMHS2SKwW8zGlA
+[2025-08-18 11:39:17] Received login request for username: alexcoleman.creatorshot, user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36, ip: 223.233.70.142
+[2025-08-18 11:39:17] Response headers:
+HTTP/2 200 
+set-cookie: csrftoken=24os8mIoX1MiLsWzmIulP8; expires=Tue, 22-Sep-2026 09:39:15 GMT; Max-Age=34560000; path=/; domain=.instagram.com; secure; SameSite=None
+set-cookie: mid=aKL0wwALAAFwFtc7_yY9KlGUovoS; expires=Tue, 22-Sep-2026 09:39:15 GMT; Max-Age=34560000; path=/; domain=.instagram.com; secure; httponly; SameSite=None
+accept-ch-lifetime: 4838400
+accept-ch: viewport-width,dpr,Sec-CH-Prefers-Color-Scheme,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Platform-Version,Sec-CH-UA-Model
+pragma: no-cache
+cache-control: private, no-cache, no-store, must-revalidate
+expires: Sat, 01 Jan 2000 00:00:00 GMT
+content-security-policy: default-src *.facebook.com *.fbcdn.net *.instagram.com blob:;script-src *.instagram.com static.cdninstagram.com *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-JdDqaBN5' blob: 'self' 'wasm-unsafe-eval' https://*.google-analytics.com https://translate.google.com https://apis.google.com https://accounts.google.com;style-src *.instagram.com static.cdninstagram.com data: blob: 'unsafe-inline' *.fbcdn.net *.facebook.com;connect-src *.instagram.com wss://edge-chat.instagram.com connect.facebook.net *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* ws://localhost:* blob: *.cdninstagram.com wss://*.instagram.com:* 'self';font-src *.instagram.com static.cdninstagram.com data: *.fbcdn.net *.intern.facebook.com *.facebook.com https://fonts.gstatic.com;img-src *.instagram.com *.facebook.com *.fbcdn.net data: *.cdninstagram.com *.whatsapp.net blob: *.fbsbx.com android-webview-video-poster: *.oculuscdn.com *.giphy.com *.tenor.co *.tenor.com www.googleadservices.com *.doubleclick.net *.google.com *.google.co.uk https://www.gstatic.com https://*.google-analytics.com;media-src *.facebook.com *.fbcdn.net *.instagram.com *.cdninstagram.com cdn.fbsbx.com lookaside.fbsbx.com data: blob: https://*.giphy.com *.tenor.co *.tenor.com;child-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;frame-src *.instagram.com *.facebook.com *.fbsbx.com fbsbx.com data: www.googleadservices.com *.doubleclick.net *.google.com *.google.co.uk;manifest-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;object-src *.facebook.com *.fbcdn.net *.instagram.com data: blob:;block-all-mixed-content;upgrade-insecure-requests;
+document-policy: include-js-call-stacks-in-crash-reports
+x-frame-options: DENY
+x-content-type-options: nosniff
+x-xss-protection: 0
+reporting-endpoints: coop_report="https://www.facebook.com/browser_reporting/coop/?minimize=0", default="https://www.instagram.com/error/ig_web_error_reports/?device_level=unknown&brsid=7539857845904334460&cpp=C3&cv=1026004733&st=1755509955910"
+report-to: {"max_age":2592000,"endpoints":[{"url":"https:\/\/www.facebook.com\/browser_reporting\/coop\/?minimize=0"}],"group":"coop_report","include_subdomains":true}, {"max_age":259200,"endpoints":[{"url":"https:\/\/www.instagram.com\/error\/ig_web_error_reports\/?device_level=unknown&brsid=7539857845904334460&cpp=C3&cv=1026004733&st=1755509955910"}]}
+cross-origin-opener-policy-report-only: restrict-properties;report-to="coop_report"
+cross-origin-opener-policy: same-origin-allow-popups
+vary: Sec-Fetch-Site, Sec-Fetch-Mode
+vary: Accept-Encoding
+origin-agent-cluster: ?1
+strict-transport-security: max-age=31536000; preload; includeSubDomains
+x-stack: www
+content-type: text/html; charset="utf-8"
+x-fb-debug: hZrxN1LAHIqlzZ1P+CLQbrrTfda7YgItNDAyZWYWljCnHguyWDPL+78AcnZwtd3U65WZJxjd95G+ArqG0dzJTQ==
+date: Mon, 18 Aug 2025 09:39:16 GMT
+alt-svc: h3=":443"; ma=86400
+x-fb-connection-quality: EXCELLENT; q=0.9, rtt=7, rtx=0, c=16, mss=1392, tbw=3798, tp=-1, tpl=-1, uplat=276, ullat=0
+
+
+[2025-08-18 11:39:17] Response body (first 500 chars):
+<!DOCTYPE html><html class="_9dls _ar44" lang="en" dir="ltr"><head><link data-default-icon="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" rel="icon" sizes="192x192" href="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" /><meta name="bingbot" content="noarchive" /><meta charset="utf-8" /><meta name="apple-mobile-web-app-status-bar-style" content="default" /><meta name="mobile-web-app-capable" content="yes" /><meta id="viewport" name="viewport" content="width=
+[2025-08-18 11:39:17] Found csrftoken in header: 24os8mIoX1MiLsWzmIulP8
+[2025-08-18 11:39:17] Using CSRF token: 24os8mIoX1MiLsWzmIulP8
+[2025-08-18 11:39:17] Login request headers:
+Array
+(
+    [0] => User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+    [1] => X-CSRFToken: 24os8mIoX1MiLsWzmIulP8
+    [2] => X-Requested-With: XMLHttpRequest
+    [3] => Referer: https://www.instagram.com/accounts/login/
+    [4] => Content-Type: application/x-www-form-urlencoded
+    [5] => Cookie: csrftoken=24os8mIoX1MiLsWzmIulP8; mid=aKL0wwALAAFwFtc7_yY9KlGUovoS
+)
+
+[2025-08-18 11:39:17] Login request post fields:
+username=alexcoleman.creatorshot&enc_password=%23PWD_INSTAGRAM_BROWSER%3A0%3A1755509957%3A7016272690&queryParams=%7B%7D&optIntoOneTap=false
+[2025-08-18 11:39:20] Login response headers:
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+ig-set-authorization: Bearer IGT:2:eyJkc191c2VyX2lkIjoiNTk1MjY0MDY2MzEiLCJzZXNzaW9uaWQiOiI1OTUyNjQwNjYzMSUzQWZwRzFSRDFqaGFwTFNiJTNBNCUzQUFZY2loc3U1WmFacXY0MVhVZEhGOHBQZkNFbThJRTkwdTlMXzNiOHlCdyJ9
+ig-set-password-encryption-key-id: 1
+ig-set-password-encryption-pub-key: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF3VkZGbFBHblBoMnN4Ykg4bWplTgpqNG9XL29XRkhUQitBYmVsT0R3SXBhOG1YNURCWTlaS3RNQ2JRWXc1cjhyMXdZYjJxbDQycmZ0REdIK1V4SG9sCkJnOW5SaThTTVQ1bEtYRzdpSEFIVDNVYWowUlpkNjVVYVd1ZnJhV2VQdnhQd3Ard1Urbm1ibENiK3ZNbTNnTHoKMDBLdS9Fblh4c2RiU3NEa3Z1NFZFK3JvU0hxdG5aTkJDY3I4UFk5UVprb3hyRzV3NHRPTWNCTlVJV0RycDBuTQpRVWk3YlczbEM5UThyT2FtdkR4L3ZDRWVBNjl3amY4REJPb0l4T2IrTklSb2I4WG9IcFR5QTljOUprdnNqQnFrCjJicHdkdmtzQVB3Z3B5Z2kyVUxnaGVVRTZVS3pzbEFtNnF2aEwzRmQxZnJ5dTl5TzlYb2JnRER2R3F2QWlETzQKZ1FJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+ig-set-x-mid: aKL0wwALAAFwFtc7_yY9KlGUovoS
+x-ig-reload-proxy-request-info: {"request_index": 145, "view_name": "None.CAAIGAuthenticationThriftServer.async_as_view", "uuid": "696ad7171ac7412fb19429ab16973c80", "sanitized_path": "/accounts/caa_ig_authentication_thrift_server/"}
+cross-origin-opener-policy: same-origin-allow-popups;report-to="coop"
+x-fb-endpoint: 
+x-frame-options: SAMEORIGIN
+cache-control: private, no-cache, no-store, must-revalidate
+pragma: no-cache
+expires: Sat, 01 Jan 2000 00:00:00 GMT
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-xss-protection: 0
+ig-set-ig-u-ds-user-id: 59526406631
+ig-set-ig-u-rur: CCO
+cross-origin-embedder-policy-report-only: require-corp;report-to="coep"
+ig-set-password-encryption-web-key-id: 50
+ig-set-password-encryption-web-pub-key: 30f47bcd4d0a44801a87ef2ccf3cf8186ad5dac6230d8930c23777499aece350
+ig-set-password-encryption-web-key-version: 10
+x-robots-tag: noindex
+date: Mon, 18 Aug 2025 09:39:19 GMT
+vary: Accept-Language, Cookie
+content-language: en
+content-security-policy: report-uri https://www.instagram.com/security/csp_report/; default-src 'self' https://www.instagram.com; img-src data: blob: https://*.fbcdn.net https://*.instagram.com https://*.cdninstagram.com https://*.facebook.com https://*.fbsbx.com https://*.threads.net https://*.threads.com https://*.giphy.com; font-src data: https://*.fbcdn.net https://*.instagram.com https://*.cdninstagram.com; media-src 'self' blob: https://www.instagram.com https://*.cdninstagram.com https://*.fbcdn.net; manifest-src 'self' https://www.instagram.com; script-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://*.cdninstagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' https://*.www.instagram.com https://www.instagram.com 'unsafe-inline'; connect-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://graph.instagram.com https://*.graph.instagram.com https://i.instagram.com/graphql_www https://graphql.instagram.com https://*.cdninstagram.com https://api.instagram.com https://i.instagram.com https://*.i.instagram.com https://*.od.instagram.com https://i.threads.net https://i.threads.com https://*.od.threads.net https://*.od.threads.com wss://www.instagram.com wss://edge-chat.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net chrome-extension://boadgeojelhgndaghljhdicfkmllpafd blob:; worker-src 'self' blob: https://www.instagram.com; frame-src 'self' https://instagram.com https://www.instagram.com https://*.instagram.com https://staticxx.facebook.com https://www.facebook.com https://web.facebook.com https://connect.facebook.net https://m.facebook.com https://*.fbsbx.com; object-src 'none'; upgrade-insecure-requests
+report-to: {"group": "coep", "max_age": 86400, "endpoints": [{"url": "/security/coep_report/"}]},{"group": "coop", "max_age": 86400, "endpoints": [{"url": "/security/coop_report/"}]}
+cross-origin-resource-policy: cross-origin
+x-ig-push-state: c2
+x-ig-cache-control: cache
+x-aed: 522
+x-ig-request-elapsed-time-ms: 2746
+x-ig-peak-v2: 0
+x-ig-peak-time: 1
+x-ig-capacity-level: 2
+x-stack: distillery
+x-perf-stats: 37094812;21107;2744746
+set-cookie: sessionid=59526406631%3AfpG1RD1jhapLSb%3A4%3AAYcihsu5ZaZqv41XUdHF8pPfCEm8IE90u9L_3b8yBw; Domain=.instagram.com; expires=Tue, 18-Aug-2026 09:39:19 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+set-cookie: ds_user_id=59526406631; Domain=.instagram.com; expires=Sun, 16-Nov-2025 09:39:19 GMT; Max-Age=7776000; Path=/; SameSite=None; Secure
+set-cookie: csrftoken=24os8mIoX1MiLsWzmIulP8; Domain=.instagram.com; expires=Tue, 22-Sep-2026 09:39:19 GMT; Max-Age=34560000; Path=/; Secure
+set-cookie: ig_did=954BEC4D-9A85-441A-9C8A-519354E499C1; Domain=.instagram.com; expires=Tue, 18-Aug-2026 09:39:19 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+content-length: 130
+x-ig-origin-region: cco
+alt-svc: h3=":443"; ma=86400
+x-fb-connection-quality: EXCELLENT; q=0.9, rtt=8, rtx=0, c=16, mss=1392, tbw=3798, tp=-1, tpl=-1, uplat=2968, ullat=0
+
+
+[2025-08-18 11:39:20] Login response body (first 500 chars):
+{"user":true,"userId":"59526406631","authenticated":true,"oneTapPrompt":true,"has_onboarded_to_text_post_app":false,"status":"ok"}
+[2025-08-18 11:39:20] Session ID: 59526406631%3AfpG1RD1jhapLSb%3A4%3AAYcihsu5ZaZqv41XUdHF8pPfCEm8IE90u9L_3b8yBw
