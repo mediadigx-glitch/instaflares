@@ -144,6 +144,18 @@ const DashboardPage = () => {
         setShowCheckpoint({ url: data.verification_url });
         showToast("Verification required. Please follow the steps.");
       } else if (data.status === "success") {
+        const token = localStorage.getItem("token");
+        await fetch("/api/instagram-accounts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            instagram_username: loginUsername,
+            instagram_password: loginPassword,
+          }),
+        });
         showToast("Account linked successfully!");
         setShowLoginForm(false);
         fetchAccounts();
@@ -198,9 +210,13 @@ const DashboardPage = () => {
   const handleRemoveAccount = async (insta_id: number) => {
     setLoading(true);
     try {
+      const token = localStorage.getItem("token");
       const res = await fetch("/api/instagram-accounts", {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
         body: JSON.stringify({ insta_id }),
       });
       const data = await res.json();

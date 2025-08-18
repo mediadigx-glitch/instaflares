@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,7 +17,10 @@ export async function POST(req: NextRequest) {
       'INSERT INTO users (username, email_address, password) VALUES ($1, $2, $3) RETURNING user_id, username, email_address, created_at',
       [name, email, hashedPassword]
     );
-    return NextResponse.json({ user: result.rows[0] });
+    const user = result.rows[0];
+    const JWT_SECRET = process.env.JWT_SECRET || 'changeme';
+    const token = jwt.sign({ user_id: user.user_id }, JWT_SECRET, { expiresIn: '7d' });
+    return NextResponse.json({ user, token });
   } catch (err: any) {
     console.error('Signup error:', err);
     if (err.code === '23505') {
