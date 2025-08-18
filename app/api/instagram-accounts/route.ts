@@ -81,23 +81,23 @@ export async function DELETE(req: NextRequest) {
 }
 
 // Client-side function to call POST or DELETE
-export async function callApi(method: "POST" | "DELETE", data: any) {
-  const token = localStorage.getItem("token");
-  if (!token) throw new Error("No token found");
+// export async function callApi(method: "POST" | "DELETE", data: any) {
+//   const token = localStorage.getItem("token");
+//   if (!token) throw new Error("No token found");
 
-  const response = await fetch("/api/instagram-accounts", {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  });
+//   const response = await fetch("/api/instagram-accounts", {
+//     method,
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${token}`,
+//     },
+//     body: JSON.stringify(data),
+//   });
 
-  if (!response.ok) {
-    const errorResponse = await response.json();
-    throw new Error(errorResponse.error || "Unknown error");
-  }
+//   if (!response.ok) {
+//     const errorResponse = await response.json();
+//     throw new Error(errorResponse.error || "Unknown error");
+//   }
 
-  return response.json();
-}
+//   return response.json();
+// }
