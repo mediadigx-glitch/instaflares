@@ -1,0 +1,10 @@
+23.95.150.145:6114:gsqadero:13fud1pto2si
+198.23.239.134:6540:gsqadero:13fud1pto2si
+45.38.107.97:6014:gsqadero:13fud1pto2si
+207.244.217.165:6712:gsqadero:13fud1pto2si
+107.172.163.27:6543:gsqadero:13fud1pto2si
+104.222.161.211:6343:gsqadero:13fud1pto2si
+64.137.96.74:6641:gsqadero:13fud1pto2si
+216.10.27.159:6837:gsqadero:13fud1pto2si
+136.0.207.84:6661:gsqadero:13fud1pto2si
+142.147.128.93:6593:gsqadero:13fud1pto2si

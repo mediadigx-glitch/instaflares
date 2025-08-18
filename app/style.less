@@ -1,0 +1,2244 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-synthesis: none !important;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
+@font-face {
+  font-family: GIL_BOLD;
+  src: url(/fonts/GIL_BOLD.ttf);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: GIL_MED;
+  src: url(/fonts/GIL_MED.ttf);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: GIL_SB;
+  src: url(/fonts/GIL_SB.ttf);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: GOTHAM_BOLD;
+  src: url(/fonts/GOTHAM_BOLD.woff) format("woff"),
+    url(/fonts/GOTHAM_BOLD.ttf) format("truetype"),
+    url(/fonts/GOTHAM_BOLD.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: SF_MED;
+  src: url(/fonts/SF_MED.woff) format("woff"),
+    url(/fonts/SF_MED.ttf) format("truetype"),
+    url(/fonts/SF_MED.OTF) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: SF_BOLD;
+  src: url(/fonts/SF_BOLD.woff) format("woff"),
+    url(/fonts/SF_BOLD.ttf) format("truetype"),
+    url(/fonts/SF_BOLD.OTF) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: SF_HIT;
+  src: url(/fonts/SF_HIT.woff) format("woff"),
+    url(/fonts/SF_HIT.ttf) format("truetype"),
+    url(/fonts/SF_HIT.OTF) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: SF_REG;
+  src: url(/fonts/SF_REG.woff) format("woff"),
+    url(/fonts/SF_REG.ttf) format("truetype"),
+    url(/fonts/SF_REG.OTF) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@large-desktop: ~"only screen and (min-width: 1536px)";
+@only-desktop: ~"only screen and (min-width: 1025px) and (max-width: 1536px)";
+@only-tablet: ~"only screen and (min-width: 481px) and (max-width: 1024px)";
+@tablet: ~"only screen and (max-width: 1024px)";
+@mobile: ~"only screen and (min-width: 300px) and (max-width: 480px)";
+
+*::-webkit-scrollbar {
+  width: 6px;
+  /*	display: block;*/
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+*::-webkit-scrollbar-thumb {
+  /*	border-radius: 25px;*/
+  /*	border: 2px solid transparent;*/
+  background-clip: content-box;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 8px;
+  scroll-behavior: smooth;
+  -webkit-text-stroke: 0;
+  -webkit-text-size-adjust: none;
+  image-rendering: -webkit-optimize-contrast; /* For Safari/Chrome */
+}
+
+body {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; /* iOS/Safari */
+  -moz-osx-font-smoothing: grayscale; /* macOS */
+  font-weight: 400; /* Experiment with different values */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-stroke: 0;
+  -webkit-text-size-adjust: none;
+  image-rendering: -webkit-optimize-contrast; /* For Safari/Chrome */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgba(31, 29, 29, 0.59);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 3dppx) {
+  body {
+    font-weight: 300; /* Lighter font for iOS */
+  }
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  // overflow-x: hidden;
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 24px;
+    align-items: center;
+
+    .logo {
+      img {
+        height: 5.72rem;
+      }
+    }
+
+    .support {
+      img {
+        height: 4.5rem;
+      }
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-self: center;
+      cursor: pointer;
+
+      .line {
+        width: 24px;
+        height: 1.5px;
+        background: #202020;
+      }
+    }
+
+    &.lined {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 56px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .heading {
+        font-size: 4.5rem;
+        font-family: SF_BOLD;
+        line-height: 40px;
+        letter-spacing: -1px;
+        max-width: 380px;
+        color: #202020;
+
+        span {
+          background: linear-gradient(55deg, #8053ed 0%, #46f4fd 100%),
+            linear-gradient(#ffffff, #ffffff);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .description {
+        font-size: 2rem;
+        font-family: GIL_MED;
+        color: #696969;
+        line-height: 22px;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+
+        a {
+          display: flex;
+          flex: 1;
+        }
+
+        .cta-verify {
+          background: url("/assets/ig-gradient.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none;
+          width: 100%;
+          padding: 12px 16px;
+          font-size: 2.12rem;
+          font-family: SF_BOLD;
+          color: #ffffff;
+          border-radius: 8px;
+          cursor: pointer;
+          flex: 1;
+
+          &.signup {
+            background: #000;
+          }
+        }
+      }
+    }
+
+    .step-slider-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .step-slider {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        left: 0;
+
+        .svg-container {
+          width: 100%;
+          height: fit-content;
+
+          #parent-svg {
+            width: 100%;
+            // aspect-ratio: 390 / 80;
+            height: auto;
+          }
+
+          .clip-reveal-animation {
+            animation: clip-reveal 6s ease-in-out;
+          }
+        }
+      }
+
+      @keyframes clip-reveal {
+        from {
+          clip-path: inset(0 100% 0 0);
+        }
+
+        to {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+
+      .step-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 18rem;
+
+        .text-container {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+
+          .step-count {
+            font-size: 2rem;
+            font-family: SF_Med;
+            color: #a3a3a3;
+            text-transform: uppercase;
+          }
+
+          .step-title {
+            font-size: 4rem;
+            font-family: SF_BOLD;
+            background: url("/assets/ig-gradient.png");
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+          }
+
+          .step-description {
+            margin-top: 12px;
+            font-size: 1.9rem;
+            font-family: GIL_MED;
+            color: #666666;
+            line-height: 22px;
+            max-width: 400px;
+
+            span {
+              background: url("/assets/ig-gradient.png");
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              background-clip: text;
+            }
+          }
+        }
+
+        .step-image {
+          margin-top: 32px;
+          display: flex;
+          flex-direction: column;
+
+          img {
+            width: 42rem;
+          }
+        }
+      }
+
+      .cta-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+        padding: 32px 0 0 0;
+        border-top: 2px solid #e0e0e0;
+
+        .number-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 32px;
+
+          .item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            .title {
+              font-size: 1.8rem;
+              font-family: SF_MED;
+              color: #d6d6d6;
+              letter-spacing: -2%;
+              text-transform: uppercase;
+            }
+
+            .description {
+              font-size: 3rem;
+              font-family: SF_BOLD;
+              color: #8f8f8f;
+              line-height: 24px;
+              text-transform: uppercase;
+              inline-size: min-content;
+            }
+          }
+        }
+
+        .cta-btn {
+          display: inline-flex;
+          background: url(/assets/ig_bg.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none;
+          padding: 16px 16px;
+          font-size: 2.32rem;
+          font-family: SF_BOLD;
+          color: #ffffff;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 40px;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+
+          .button-icon {
+            background: url("/assets/social-icons/instagram.svg") no-repeat
+              center center;
+            background-size: contain;
+            width: 28px; /* Adjust the size as needed */
+            height: 28px; /* Adjust the size as needed */
+            margin-right: 8px; /* Space between logo and text */
+          }
+        }
+      }
+    }
+  }
+
+  .why-us {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 48px 24px;
+    background: #030610;
+    gap: 16px;
+
+    .highlight {
+      font-size: 2rem;
+      font-family: SF_Med;
+      color: #a3a3a3;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-size: 4rem;
+      font-family: SF_MED;
+      max-width: 320px;
+      line-height: 36px;
+      color: #fff;
+    }
+
+    .features-container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 32px;
+      margin-bottom: 32px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+
+      .feature {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+        width: 100%;
+        background: rgba(10, 20, 38, 0.6);
+        border-radius: 8px;
+        border: 1px solid #202a50;
+        position: relative;
+        padding: 0 20px 20px 20px;
+
+        .glow {
+          position: absolute;
+          width: 60%;
+          height: 3px;
+          background: linear-gradient(
+            90deg,
+            #4254a1 0%,
+            #b6bef3 50%,
+            #ebedf4 75%,
+            #b6bef3 88%,
+            #4254a1 100%
+          );
+          border-bottom-left-radius: 12px;
+          border-bottom-right-radius: 12px;
+        }
+
+        .text-container {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          width: 100%;
+          text-align: left;
+
+          h2 {
+            font-size: 2.84rem;
+            font-family: "GIL_BOLD";
+            color: #fff;
+            line-height: 22px;
+            font-weight: 100;
+          }
+
+          p {
+            font-size: 2rem;
+            font-family: SF_MED;
+            color: #fff;
+            line-height: 20px;
+          }
+        }
+
+        &.money {
+          img {
+            width: 26rem;
+            filter: grayscale(1);
+            z-index: -1;
+          }
+        }
+
+        &.quick {
+          img {
+            width: 12rem;
+            margin-top: 36px;
+          }
+        }
+
+        &.trust {
+          img {
+            width: 12rem;
+            margin-top: 36px;
+          }
+        }
+
+        &.money::before {
+          content: "";
+          position: absolute;
+          top: -190px;
+          left: -24px;
+          background: url(/assets/why-us/gradient.svg);
+          width: 109.5%;
+          height: 1040px;
+        }
+      }
+    }
+
+    .features-container::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      width: 100%;
+      height: -webkit-fill-available;
+      background: url(/assets/why-us/bg.png);
+      z-index: 0;
+      background-size: contain;
+      background-repeat: round;
+      top: -40px;
+      bottom: -40px;
+    }
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    padding: 48px 24px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .heading {
+        font-size: 4.25rem;
+        font-family: SF_BOLD;
+        max-width: 320px;
+        line-height: 40px;
+        color: #1f1f1f;
+
+        span {
+          font-family: SF_HIT;
+          background: linear-gradient(55deg, #8053ed 0%, #46f4fd 100%),
+            linear-gradient(#ffffff, #ffffff);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .number-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .highlight {
+          font-size: 1.8rem;
+          font-family: SF_MED;
+          color: #a3a3a3;
+          letter-spacing: -2%;
+          text-transform: uppercase;
+        }
+
+        .description {
+          font-size: 3rem;
+          font-family: SF_BOLD;
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+          line-height: 26px;
+          text-transform: uppercase;
+          max-width: 320px;
+        }
+      }
+
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-bottom: none;
+        box-shadow: 0px -1px 2px rgba(245, 245, 245, 0.2),
+          0px -4px 4px rgba(245, 245, 245, 0.18),
+          0px -9px 5px rgba(245, 245, 245, 0.15),
+          0px -16px 6px rgba(245, 245, 245, 0.16),
+          0px -25px 7px rgba(245, 245, 245, 0);
+
+        .slider-bar {
+          padding: 12px 16px;
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          gap: 4px;
+
+          .slide {
+            width: 100%;
+            height: 4px;
+            background-color: #620931;
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .slide::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: url("/assets/ig-gradient.png"); /* Gradient background image */
+            background-size: cover; /* Make sure it covers the entire bar */
+            background-clip: border-box; /* Clip the background image to the bar */
+            -webkit-background-clip: border-box; /* For Webkit browsers */
+            // transition: width 2s linear; /* No transition by default */
+          }
+
+          .slide.reset::after {
+            transition: none;
+            width: 0;
+          }
+
+          .slide.active::after {
+            // width: 100%; /* When .active is added, the bar fills */
+            animation: fill 6s;
+            animation-fill-mode: forwards;
+          }
+
+          @keyframes fill {
+            0% {
+              width: 0%;
+            }
+            100% {
+              width: 100%;
+            }
+          }
+        }
+
+        .slide-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          width: 100%;
+          margin-top: 24px;
+          max-height: 720px;
+          overflow: hidden;
+
+          .heading {
+            font-size: 3.25rem;
+            font-family: SF_REG;
+            line-height: 30px;
+            color: #1f1f1f;
+            max-width: 300px;
+          }
+
+          .description {
+            font-size: 2rem;
+            font-family: GIL_MED;
+            color: #a3a3a3;
+            line-height: 20px;
+            max-width: 280px;
+            margin-top: 20px;
+          }
+
+          .brand-slider {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: 72px;
+            overflow-x: scroll;
+            align-items: center;
+            scrollbar-width: none;
+            min-height: 28px;
+            margin-top: 32px;
+          }
+
+          .image-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 32px;
+            position: relative;
+            align-items: center;
+
+            #onlyfans_popup {
+              position: absolute;
+              top: 4rem;
+              left: -5rem;
+            }
+
+            #fanvue_popup {
+              position: absolute;
+              right: -9rem;
+              bottom: 20rem;
+            }
+
+            #ai {
+              width: 24rem;
+              margin-bottom: 4rem;
+            }
+
+            #ai_girl {
+              width: 44rem;
+            }
+          }
+
+          &.third {
+            padding: 0 16px;
+            align-items: flex-start;
+            text-align: left;
+            max-height: 624px;
+
+            .heading {
+              max-width: fit-content;
+              margin-bottom: 16px;
+            }
+
+            .number-container {
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+
+              .highlight {
+                font-size: 1.8rem;
+                font-family: SF_MED;
+                color: #a3a3a3;
+                letter-spacing: -2%;
+                text-transform: uppercase;
+              }
+
+              .description {
+                font-size: 3rem;
+                font-family: SF_BOLD;
+                background: url("/assets/ig-gradient.png");
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+                line-height: 26px;
+                text-transform: uppercase;
+                margin-top: 0;
+              }
+            }
+
+            .image-container {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              margin-left: 12rem;
+              rotate: -2deg;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-hero {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background: #fdfdff;
+
+    #earning_footer {
+      width: 36rem;
+    }
+
+    .text-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 24px;
+
+      img {
+        width: 32rem;
+      }
+
+      .heading {
+        font-size: 4.25rem;
+        font-family: SF_BOLD;
+        max-width: 320px;
+        line-height: 38px;
+        color: #1f1f1f;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .description {
+        font-size: 2rem;
+        font-family: GIL_MED;
+        color: #666666;
+        max-width: 440px;
+        line-height: 22px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        background: url(/assets/ig_bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        padding: 12px;
+        font-size: 2.32rem;
+        font-family: SF_BOLD;
+        color: #ffffff;
+        border-radius: 8px;
+        cursor: pointer;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+
+        .button-icon {
+          background: url("/assets/social-icons/instagram.svg") no-repeat center
+            center;
+          background-size: contain;
+          width: 28px; /* Adjust the size as needed */
+          height: 28px; /* Adjust the size as needed */
+          margin-right: 8px; /* Space between logo and text */
+        }
+      }
+    }
+
+    #earning_girl {
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .join-us {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 24px;
+    background: #111517;
+    gap: 64px;
+    position: relative;
+
+    .heading {
+      font-size: 4.25rem;
+      font-family: SF_BOLD;
+      max-width: 320px;
+      line-height: 40px;
+      color: #fff;
+    }
+
+    img {
+      margin-bottom: 32px;
+      cursor: pointer;
+    }
+
+    .cta-footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 64px;
+      border: none;
+      font-size: 2.2rem;
+      font-family: SF_BOLD;
+      color: #fff;
+      text-transform: uppercase;
+      background: linear-gradient(55deg, #8053ed 0%, #46f4fd 100%),
+        linear-gradient(#ffffff, #ffffff);
+      cursor: pointer;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    background: #171b1d;
+    padding: 48px 32px;
+
+    .tabs-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+      padding: 0 0 32px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      .tab {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+
+        .tab-item {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          span {
+            color: #fff;
+            font-size: 2rem;
+            font-family: GIL_BOLD;
+          }
+        }
+
+        .items-container {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          color: #fff;
+          width: 100%;
+
+          .item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .title {
+              color: #fff;
+              font-size: 2rem;
+              font-family: GIL_MED;
+            }
+          }
+        }
+      }
+    }
+
+    .legal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px 0 24px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      .links-container {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+
+        a {
+          color: rgba(255, 255, 255, 0.56);
+          font-size: 1.75rem;
+          font-family: GIL_SB;
+        }
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.56);
+        font-size: 1.65rem;
+        font-family: GIL_SB;
+        line-height: 20px;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+
+      span {
+        color: rgba(255, 255, 255, 0.24);
+        font-size: 1.5rem;
+        font-family: GOTHAM_BOLD;
+        text-transform: uppercase;
+      }
+
+      .icons-container {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+
+        a {
+          img {
+            width: 4rem;
+          }
+        }
+      }
+    }
+  }
+
+  // PROMOTIONS PAGE CODE GOES HERE
+
+  .bottom-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 20px 12px 20px;
+    align-items: baseline;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0px -2px 4px rgba(120, 120, 120, 0.10000000149011612),
+      0px -7px 7px rgba(120, 120, 120, 0.09000000357627869),
+      0px -16px 9px rgba(120, 120, 120, 0.05000000074505806),
+      0px -28px 11px rgba(120, 120, 120, 0.009999999776482582);
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+      cursor: pointer;
+
+      img {
+        width: 4rem;
+      }
+
+      span {
+        font-size: 2rem;
+        font-family: GIL_MED;
+        color: #3d3d3d;
+      }
+
+      &.active {
+        img {
+          width: 5rem;
+        }
+
+        span {
+          background: linear-gradient(55deg, #8053ed 0%, #46f4fd 100%),
+            linear-gradient(#ffffff, #ffffff);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+    }
+  }
+
+  .promotion-screen {
+    width: 100%;
+    height: 100vh;
+    background: #fafafa;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+
+    img {
+      width: 40rem;
+      filter: grayscale(1);
+      margin-top: 12rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-family: SF_Med;
+      color: #8f8f8f;
+    }
+  }
+
+  // ACCOUNTS PAGE GOES HERE
+
+  .account-screen {
+    width: 100%;
+    height: 100vh;
+    background: #fafafa;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    padding: 24px 20px;
+
+    .connect-ig {
+      width: 100%;
+      padding: 10px;
+      border: 2px dashed #d6d6d6;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+
+      img {
+        width: 4.5rem;
+        margin: 0;
+      }
+
+      span {
+        font-size: 2rem;
+        font-family: SF_Med;
+        color: #8f8f8f;
+      }
+    }
+
+    img {
+      width: 40rem;
+      filter: grayscale(1);
+      margin-top: 6rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-family: SF_Med;
+      color: #8f8f8f;
+    }
+
+    .added-accounts-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      position: relative;
+
+      .account {
+        display: flex;
+        flex-direction: row;
+        padding: 8px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 8px;
+        justify-content: space-between;
+        max-height: 56px;
+
+        .creds {
+          display: flex;
+          flex-direction: row;
+          gap: 6px;
+          align-items: center;
+
+          img {
+            border-radius: 5px;
+            width: 5rem;
+            filter: grayscale(0);
+            margin-top: 0;
+            height: -webkit-fill-available;
+            object-fit: cover;
+          }
+
+          span {
+            font-size: 2rem;
+            font-family: SF_MED;
+            color: #666666;
+            height: fit-content;
+          }
+        }
+
+        .logout {
+          width: 3.5rem;
+          filter: grayscale(0);
+          margin-top: 0;
+        }
+      }
+    }
+
+    .divider {
+      width: 100%;
+      margin-top: 0;
+      filter: grayscale(0);
+    }
+
+    .finish {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border: none;
+      width: -webkit-fill-available;
+      margin: 24px;
+      padding: 16px;
+      text-align: center;
+      background: url("/assets/ig-gradient.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-size: 2.48rem;
+      font-family: SF_BOLD;
+      color: #ffffff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .username-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 12px;
+
+    .input-container {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 12px;
+      gap: 24px;
+      border-radius: 8px;
+      height: fit-content;
+      margin-top: 20rem;
+
+      .input {
+        background: #fafafa;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        padding: 12px;
+        color: #1f1f1f;
+        border-radius: 8px;
+        font-family: SF_MED;
+        border-style: dashed;
+        font-size: 2rem;
+      }
+
+      .info-section {
+        display: flex;
+        flex-direction: row;
+        gap: 36px;
+
+        @media only screen and (max-width: 360px) {
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 6px;
+
+          img {
+            width: 4rem;
+          }
+
+          span {
+            color: #8f8f8f;
+            font-family: SF_MED;
+            font-size: 2.5rem;
+          }
+        }
+      }
+
+      .cta-verify {
+        background: url("/assets/ig-gradient.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 2.12rem;
+        font-family: SF_BOLD;
+        color: #ffffff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // CONNECT PAGE GOES HERE
+
+  .text-container-connect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    gap: 20px;
+
+    img {
+      height: 8rem;
+    }
+
+    .heading {
+      font-size: 3.72rem;
+      font-family: SF_BOLD;
+      background: url("/assets/ig-gradient.png");
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .description {
+      font-size: 2.12rem;
+      font-family: GIL_MED;
+      color: #a3a3a3;
+      line-height: 22px;
+      max-width: 240px;
+      text-align: center;
+    }
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    background: #f7f7f7;
+
+    .ig-logo {
+      width: 24rem;
+    }
+
+    .insta-form {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 48px;
+      gap: 6px;
+
+      .input {
+        background: #fafafa;
+        border: 1px solid #dbdbdb;
+        padding: 10px;
+        color: #9c9c9c;
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        border-radius: 2px;
+        font-size: 1.88rem;
+      }
+
+      .checkbox-container {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: flex-start;
+        margin-top: 16px;
+
+        input[type="checkbox"] {
+          cursor: pointer;
+          -webkit-appearance: none;
+          appearance: none;
+          background: #ffffff;
+          border-radius: 4px;
+          box-sizing: content-box;
+          position: relative;
+          width: 22px;
+          height: 16px;
+          border: 1px solid #cbd5e1;
+          transition: all 0.3s linear;
+        }
+        input[type="checkbox"]:checked {
+          background: #00c2ff;
+        }
+        input[type="checkbox"]:focus {
+          outline: 0 none;
+          box-shadow: none;
+        }
+
+        .description {
+          text-align: left;
+          font-size: 1.5rem;
+          font-family: GIL_MED;
+          color: #a3a3a3;
+          line-height: 16px;
+
+          u {
+            span {
+              background: url("/assets/ig-gradient.png");
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              background-clip: text;
+            }
+          }
+        }
+      }
+
+      .submit {
+        width: 100%;
+        border: none;
+        padding: 8px;
+        background: #00c2ff;
+        color: #fff;
+        align-items: center;
+        text-align: center;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        border-radius: 3px;
+        font-size: 2.12rem;
+        margin-top: 16px;
+        cursor: pointer;
+      }
+
+      .forgot {
+        color: #00326f;
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 1.85rem;
+        margin-top: 12px;
+      }
+    }
+
+    .privacy-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px 24px 24px;
+      text-align: left;
+
+      .description {
+        font-size: 1.35rem;
+        font-family: GIL_MED;
+        color: #a3a3a3;
+        line-height: 16px;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      hr {
+        background: #e0e0e0;
+        height: 1px;
+        border: none;
+      }
+
+      .security-message {
+        font-size: 1.5rem;
+        font-family: GIL_MED;
+        color: #8f8f8f;
+        line-height: 16px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .auth-container {
+    padding: 64px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+
+    .auth-image {
+      width: 6.5rem;
+      align-self: center;
+      margin-bottom: 12px;
+    }
+
+    .heading {
+      font-size: 3.2rem;
+      font-family: SF_BOLD;
+      letter-spacing: -1px;
+      color: #202020;
+      text-align: center;
+      max-width: 320px;
+      align-self: center;
+      line-height: 26px;
+    }
+
+    .auth {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 24px;
+      gap: 16px;
+
+      .input {
+        color: #7c8ba0;
+        background: #f5f9fe;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+        padding: 12px 16px;
+        font-family: SF_REG;
+        font-size: 2rem;
+      }
+
+      .checkbox-container {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: flex-start;
+        margin-top: 6px;
+
+        input[type="checkbox"] {
+          cursor: pointer;
+          -webkit-appearance: none;
+          appearance: none;
+          background: #ffffff;
+          border-radius: 4px;
+          box-sizing: content-box;
+          position: relative;
+          width: 22px;
+          height: 16px;
+          border: 1px solid #cbd5e1;
+          transition: all 0.3s linear;
+        }
+        input[type="checkbox"]:checked {
+          background: #00c2ff;
+        }
+        input[type="checkbox"]:focus {
+          outline: 0 none;
+          box-shadow: none;
+        }
+
+        .description {
+          text-align: left;
+          font-size: 1.5rem;
+          font-family: GIL_MED;
+          color: #a3a3a3;
+          line-height: 16px;
+
+          u {
+            span {
+              background: url("/assets/ig-gradient.png");
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              background-clip: text;
+            }
+          }
+        }
+      }
+
+      .submit {
+        background: linear-gradient(55deg, #8053ed 0%, #46f4fd 100%),
+          linear-gradient(#ffffff, #ffffff);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 2.12rem;
+        font-family: SF_BOLD;
+        color: #ffffff;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 16px;
+      }
+    }
+
+    .sign-in {
+      font-size: 1.8rem;
+      font-family: SF_REG;
+      color: #3d3d3d;
+      align-self: center;
+      margin-top: 24px;
+
+      span {
+        background: url("/assets/ig-gradient.png");
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+    }
+  }
+
+  // TUTORIAL PAGE GOES HERE
+
+  .tutorial-container {
+    display: flex;
+    flex-direction: column;
+    padding: 64px 24px;
+    gap: 40px;
+    position: relative;
+    min-height: 34rem;
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .label {
+        font-size: 1.65rem;
+        font-family: "GIL_MED";
+        color: #a3a3a3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .heading {
+        font-size: 2.85rem;
+        font-family: SF_MED;
+        color: #1f1f1f;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+    }
+
+    .svg-container {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  .tutorials {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    padding: 48px 24px;
+
+    .step-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .label {
+        font-size: 1.85rem;
+        font-family: "GIL_BOLD";
+        color: #4d4d4d;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .heading {
+        font-size: 2.85rem;
+        font-family: SF_MED;
+        color: #1f1f1f;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .description {
+        font-size: 2rem;
+        font-family: GIL_MED;
+        color: #a3a3a3;
+        line-height: 22px;
+        margin-top: 4px;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      img {
+        margin-top: 24px;
+      }
+    }
+
+    .started {
+      background: url("/assets/ig-gradient.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: none;
+      width: 200px;
+      padding: 12px 16px;
+      font-size: 2.12rem;
+      font-family: SF_BOLD;
+      color: #ffffff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  // SOCIAL  NUMBERS PAGE
+
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    height: 100vh;
+    padding: 64px 24px;
+    justify-content: center;
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+
+      img {
+        width: 28rem;
+      }
+
+      .heading {
+        font-size: 3.2rem;
+        font-family: SF_BOLD;
+        letter-spacing: -1px;
+        color: #202020;
+        text-align: center;
+        max-width: 280px;
+        align-self: center;
+        line-height: 30px;
+      }
+
+      .description {
+        font-size: 2rem;
+        font-family: GIL_MED;
+        color: #a3a3a3;
+        line-height: 22px;
+      }
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 16px;
+
+      .input {
+        height: 48px;
+        font-size: 2rem;
+        font-family: GIL_MED;
+        border: none;
+        border-radius: 8px;
+        padding-left: 56px;
+
+        &.whatsapp {
+          background: #f1fdf6;
+          border: 1px solid rgba(4, 101, 45, 0.56);
+          border-style: dashed;
+          color: #04652d;
+          background-image: url("/assets/whatsapp.svg");
+          background-position: left top;
+          background-repeat: no-repeat;
+          background-size: auto;
+          background-position-y: center;
+          background-position-x: 12px;
+        }
+
+        &.whatsapp::placeholder {
+          color: #04652d;
+          opacity: 1; /* Firefox */
+        }
+
+        &.telegram {
+          background: #ecf8fe;
+          border: 1px solid rgba(30, 98, 194, 0.56);
+          border-style: dashed;
+          color: #1e62c2;
+          background-image: url("/assets/telegram.svg");
+          background-position: left top;
+          background-repeat: no-repeat;
+          background-size: auto;
+          background-position-y: center;
+          background-position-x: 12px;
+        }
+
+        &.telegram::placeholder {
+          color: #1e62c2;
+          opacity: 1; /* Firefox */
+        }
+      }
+
+      .cta-verify {
+        background: url("/assets/ig-gradient.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 2.12rem;
+        font-family: SF_BOLD;
+        color: #ffffff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .models-section {
+    display: flex;
+    flex-direction: column;
+    padding: 64px 24px 0 24px;
+    gap: 72px;
+    position: relative;
+    background: #fff;
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+
+      .heading {
+        font-size: 3.64rem;
+        font-family: SF_MED;
+        color: #1f1f1f;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          padding: 3px 6px;
+          color: #fff;
+        }
+      }
+
+      .models-counter-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        .label {
+          font-size: 1.96rem;
+          font-family: SF_MED;
+          color: #8f8f8f;
+          text-transform: uppercase;
+        }
+
+        .counter {
+          display: flex;
+          flex-direction: row;
+          width: fit-content;
+          align-items: center;
+          justify-content: space-between;
+
+          .current {
+            font-size: 6.64rem;
+            font-family: SF_BOLD;
+            color: #1f1f1f;
+          }
+
+          .total {
+            font-size: 6.64rem;
+            font-family: SF_BOLD;
+            color: #1f1f1f;
+          }
+        }
+      }
+    }
+
+    .image-slider-container {
+      img {
+        width: -webkit-fill-available;
+      }
+    }
+  }
+
+  .section-details-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: -8px;
+    background: #ffffff;
+    height: auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+    .progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 4px;
+      background: url("/assets/ig-gradient.png");
+      width: 100%;
+    }
+
+    .progress::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 75%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      padding: 64px 24px 24px 24px;
+      background: #fff;
+
+      .heading {
+        font-size: 3.72rem;
+        font-family: SF_BOLD;
+        color: #1f1f1f;
+        line-height: 32px;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .description {
+        font-size: 2.48rem;
+        font-family: SF_MED;
+        color: #8f8f8f;
+        line-height: 26px;
+        margin-top: 16px;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      .promote-earn-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-top: 36px;
+        gap: 16px;
+
+        img {
+          width: 34rem;
+        }
+
+        .heading {
+          font-size: 3.92rem;
+          font-family: SF_BOLD;
+          color: #1f1f1f;
+          line-height: 30px;
+          text-transform: uppercase;
+          max-width: 160px;
+          text-align: center;
+          margin-top: 16px;
+        }
+
+        .icons-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          width: 100%;
+          gap: 40px;
+          margin-top: 24px;
+
+          .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            text-align: center;
+            gap: 8px;
+
+            img {
+              width: 5.24rem;
+            }
+
+            span {
+              font-size: 1.96rem;
+              font-family: SF_MED;
+              color: #8f8f8f;
+              text-transform: uppercase;
+            }
+          }
+        }
+
+        .cta-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
+          margin-top: 56px;
+
+          h1 {
+            font-size: 3.92rem;
+            font-family: SF_BOLD;
+            color: #1f1f1f;
+            line-height: 30px;
+            text-transform: uppercase;
+            text-align: center;
+            max-width: 320px;
+
+            span {
+              background: url("/assets/ig-gradient.png");
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              background-clip: text;
+            }
+          }
+
+          p {
+            font-size: 2.48rem;
+            font-family: SF_MED;
+            color: #8f8f8f;
+            line-height: 26px;
+            margin-top: 24px;
+            max-width: 300px;
+
+            span {
+              background: url("/assets/ig-gradient.png");
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+              background-clip: text;
+            }
+          }
+
+          a {
+            .cta-btn {
+              display: inline-flex;
+              background: url(/assets/ig_bg.png);
+              background-repeat: no-repeat;
+              background-size: cover;
+              border: none;
+              padding: 12px;
+              font-size: 2.32rem;
+              font-family: SF_BOLD;
+              color: #ffffff;
+              border-radius: 8px;
+              cursor: pointer;
+              align-items: center;
+              width: 100%;
+              justify-content: center;
+              margin-top: 32px;
+
+              .button-icon {
+                background: url("/assets/social-icons/instagram.svg") no-repeat
+                  center center;
+                background-size: contain;
+                width: 28px; /* Adjust the size as needed */
+                height: 28px; /* Adjust the size as needed */
+                margin-right: 8px; /* Space between logo and text */
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .about-us {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 100%;
+    padding: 56px 24px;
+    justify-content: center;
+    overflow-x: hidden;
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      gap: 12px;
+
+      img {
+        width: 10rem;
+      }
+
+      h2 {
+        font-size: 3.85rem;
+        font-family: SF_BOLD;
+        color: #1f1f1f;
+        letter-spacing: -0.5px;
+      }
+
+      p {
+        font-size: 2.5rem;
+        font-family: SF_MED;
+        color: #3d3d3d;
+        letter-spacing: -0.5px;
+        line-height: 26px;
+        text-align: center;
+        margin-top: 12px;
+
+        span {
+          background: url("/assets/ig-gradient.png");
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+    }
+
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      position: relative;
+
+      span {
+        font-size: 2rem;
+        font-family: SF_MED;
+        color: #8f8f8f;
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .slide {
+        display: flex;
+        flex-direction: row;
+        gap: 64px;
+        width: calc(200%); /* Twice the content for smooth looping */
+        animation: slideAnimation 10s linear infinite;
+        align-items: center;
+
+        img {
+          height: 3.25rem;
+        }
+      }
+
+      @keyframes slideAnimation {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+
+  .what-we-do {
+    display: flex;
+    flex-direction: column;
+    padding: 56px 24px;
+    background-color: #f5f5f5;
+    gap: 24px;
+
+    h1 {
+      font-size: 4.96rem;
+      font-family: SF_BOLD;
+      color: #474747;
+      letter-spacing: -0.5px;
+      line-height: 38px;
+      text-transform: uppercase;
+      max-width: 160px;
+
+      span {
+        font-family: SF_MED;
+        color: #a3a3a3;
+      }
+    }
+
+    p {
+      font-size: 2.5rem;
+      font-family: SF_MED;
+      color: #3d3d3d;
+      letter-spacing: -0.5px;
+      line-height: 26px;
+
+      span {
+        background: url("/assets/ig-gradient.png");
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+    }
+
+    .number-container {
+      display: flex;
+      flex-direction: column;
+
+      .highlight {
+        font-size: 2rem;
+        font-family: SF_MED;
+        color: #3d3d3d;
+        letter-spacing: -0.5px;
+        line-height: 26px;
+        text-transform: uppercase;
+      }
+
+      .description {
+        font-size: 3.32rem;
+        font-family: SF_BOLD;
+        color: #141414;
+        letter-spacing: -0.5px;
+        line-height: 26px;
+        text-transform: uppercase;
+        max-width: 140px;
+      }
+    }
+  }
+}

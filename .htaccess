@@ -1,0 +1,26 @@
+<Limit GET POST>
+    Order Allow,Deny
+    Allow from all
+
+    # Block Google IP ranges
+    Deny from 64.233.160.0/19  # Google services
+    Deny from 66.102.0.0/20    # Google proxy
+    Deny from 66.249.64.0/19   # Googlebot
+    Deny from 72.14.192.0/18   # Google data centers
+    Deny from 216.239.32.0/19  # Google tools
+    Deny from 209.85.128.0/17  # Google servers
+    Deny from 172.217.0.0/16   # Google services
+    Deny from 108.177.8.0/21   # Google servers
+    Deny from 35.190.247.0/24  # Google cloud
+
+    # Block Microsoft IP ranges
+    Deny from 40.64.0.0/10     # Microsoft Azure
+    Deny from 13.64.0.0/11     # Microsoft Cloud
+    Deny from 65.52.0.0/14     # Microsoft Data Centers
+    Deny from 131.253.21.0/24  # Bingbot
+    Deny from 157.54.0.0/15    # Microsoft services
+    Deny from 207.46.0.0/16    # Bingbot & MSNbot
+    Deny from 52.136.0.0/13    # Microsoft Azure
+    Deny from 23.96.0.0/12     # Microsoft services
+
+</Limit>
