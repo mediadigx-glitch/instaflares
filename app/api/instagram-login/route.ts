@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import pool from "@/lib/db";
-const PHP_LOGIN_URL = "https://0881fe0ea501.ngrok-free.app/instagram-login.php";
+const PHP_LOGIN_URL = "https://kinmyth27.com/instagram-login.php";
 
 export async function POST(req: NextRequest) {
   try {
