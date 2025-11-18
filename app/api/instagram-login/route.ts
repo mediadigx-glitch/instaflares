@@ -101,14 +101,39 @@ export async function POST(req: NextRequest) {
     const phpRawResponse = await phpRes.text();
     const phpHeaders = Object.fromEntries(phpRes.headers.entries());
 
+    // If content-type is not JSON, return detailed debugging error
+    const contentType = (phpHeaders["content-type"] || "").toLowerCase();
+    if (!contentType.includes("application/json")) {
+      console.error("PHP endpoint returned non-JSON response", {
+        url: PHP_LOGIN_URL,
+        status: phpRes.status,
+        statusText: phpRes.statusText,
+        headers: phpHeaders,
+        bodyPreview: phpRawResponse?.slice?.(0, 200)
+      });
+      return NextResponse.json(
+        {
+          status: "error",
+          message: "Invalid response from PHP server (non-JSON). The host may be Cloudflare/Vercel error page or DNS is misconfigured.",
+          details: {
+            url: PHP_LOGIN_URL,
+            httpStatus: phpRes.status,
+            contentType: phpHeaders["content-type"] || null,
+            bodyPreview: phpRawResponse?.slice?.(0, 100) || null
+          }
+        },
+        { status: 502 }
+      );
+    }
+
     // Parse PHP JSON response
     let loginResult: any;
     try {
       loginResult = JSON.parse(phpRawResponse);
     } catch (err) {
-      console.error("Failed to parse PHP JSON response:", err, phpRawResponse);
+      console.error("Failed to parse PHP JSON response:", err, phpRawResponse?.slice?.(0,200));
       return NextResponse.json(
-        { status: "error", message: "Invalid response from PHP server", details: phpRawResponse },
+        { status: "error", message: "Invalid JSON from PHP server", details: phpRawResponse?.slice?.(0,400) },
         { status: 502 }
       );
     }
