@@ -128,14 +128,36 @@ log_debug("Login response headers:\n" . $header);
 log_debug("Login response body (first 500 chars):\n" . substr($body, 0, 500));
 log_debug("Session ID: $sessionid");
 
-$result = [
+// --- Normalize instagram response ---
+$instagram_json = json_decode($body, true);
+
+// Default result
+$out = [
     'status' => $sessionid ? 'success' : 'error',
     'message' => $sessionid ? 'Login successful' : 'Login failed',
     'session_id' => $sessionid,
-    'instagram_response' => json_decode($body, true),
+    'instagram_response' => $instagram_json,
     'headers' => $header
 ];
 
-echo json_encode($result);
+// Handle two-factor required
+if (!$sessionid && !empty($instagram_json['two_factor_required'])) {
+    $out['status'] = '2fa_required';
+    $out['two_factor_info'] = $instagram_json['two_factor_info'] ?? null;
+    $out['message'] = 'Two-factor authentication required';
+    log_debug("Two-factor required: " . json_encode($out['two_factor_info']));
+}
+// Handle checkpoint / account recovery modal
+elseif (!$sessionid && (!empty($instagram_json['checkpoint_url']) || !empty($instagram_json['showAccountRecoveryModal']))) {
+    $out['status'] = 'checkpoint';
+    // If Instagram provides checkpoint_url, convert to absolute URL
+    $checkpoint = $instagram_json['checkpoint_url'] ?? null;
+    $out['verification_url'] = $checkpoint ? "https://www.instagram.com{$checkpoint}" : null;
+    $out['message'] = 'Verification / checkpoint required';
+    log_debug("Checkpoint required, verification_url: " . ($out['verification_url'] ?? 'none'));
+}
 
+// Echo final structured response
+echo json_encode($out);
+exit;
 ?>

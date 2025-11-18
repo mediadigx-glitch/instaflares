@@ -463,9 +463,22 @@ const DashboardPage = () => {
             <p>
               Instagram requires additional verification. Click the button below, complete the challenge, then return and try logging in again.
             </p>
-            <Link href={showCheckpoint.url} target="_blank" rel="noopener noreferrer" className="verify-button">
-              Open Instagram Verification
-            </Link>
+
+            {showCheckpoint.url ? (
+              <a href={showCheckpoint.url} target="_blank" rel="noopener noreferrer" className="verify-button">
+                Open Instagram Verification
+              </a>
+            ) : (
+              <>
+                <p style={{ marginTop: 12 }}>
+                  No direct verification URL provided. Open Instagram app or https://instagram.com and follow account recovery steps for the user.
+                </p>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="verify-button">
+                  Open Instagram
+                </a>
+              </>
+            )}
+
             <button onClick={handleCheckpointFinish}>Try Again</button>
           </div>
         </div>

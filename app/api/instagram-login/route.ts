@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const username = (body.username || "").toString().trim();
     const password = (body.password || "").toString();
+    const otp = (body.otp || "").toString().trim();
 
     if (!username || !password) {
       return NextResponse.json(
@@ -52,21 +53,34 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Send login request to PHP server (with timeout + better logging)
+    // Send login request to PHP server (forward otp if present, optional service token)
     let phpRes: Response;
     try {
+      const timeoutMs = parseInt(process.env.PHP_FETCH_TIMEOUT_MS || "15000", 10);
+      const serviceToken = (process.env.PHP_SERVICE_TOKEN || "").toString().trim();
+      const serviceTokenHeader = (process.env.PHP_SERVICE_TOKEN_HEADER || "Authorization").toString().trim();
+
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 10000); // 10s
+      const timeout = setTimeout(() => controller.abort(), timeoutMs);
       try {
+        const headers: Record<string, string> = {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        };
+        if (serviceToken) {
+          headers[serviceTokenHeader] =
+            serviceTokenHeader.toLowerCase() === "authorization" && !/^Bearer\s+/i.test(serviceToken)
+              ? `Bearer ${serviceToken}`
+              : serviceToken;
+        }
+
         phpRes = await fetch(PHP_LOGIN_URL, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
+          headers,
           body: JSON.stringify({
             username,
             password,
+            otp: otp || undefined,
             ip_address: ipAddress,
             user_agent: userAgent,
           }),
@@ -78,7 +92,7 @@ export async function POST(req: NextRequest) {
     } catch (err) {
       console.error("Failed to contact PHP server (network/timeout):", err);
       return NextResponse.json(
-        { status: "error", message: "Failed to contact PHP server" },
+        { status: "error", message: "Failed to contact PHP server", details: (err as any)?.message || null },
         { status: 502 }
       );
     }
