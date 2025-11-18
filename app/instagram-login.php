@@ -85,7 +85,10 @@ if (!$csrftoken) {
 log_debug("Using CSRF token: $csrftoken");
 
 // --- Step 2: Login request ---
+// build encoded password for IG browser format
 $enc_password = sprintf('#PWD_INSTAGRAM_BROWSER:0:%d:%s', time(), $password);
+
+// Build POST fields required by Instagram
 $post_fields = http_build_query([
     'username' => $username,
     'enc_password' => $enc_password,
@@ -93,18 +96,21 @@ $post_fields = http_build_query([
     'optIntoOneTap' => 'false'
 ]);
 
+// Prepare headers including CSRF token and referer
 $headers = [
-    "User-Agent: $user_agent",
     "X-CSRFToken: $csrftoken",
     "X-Requested-With: XMLHttpRequest",
     "Referer: https://www.instagram.com/accounts/login/",
-    "Content-Type: application/x-www-form-urlencoded",
-    "Cookie: $cookies_str"
+    "User-Agent: $user_agent",
+    "Accept: */*",
+    "Content-Type: application/x-www-form-urlencoded"
 ];
 
+// Log what we will send (without password)
 log_debug("Login request headers:\n" . print_r($headers, true));
 log_debug("Login request post fields:\n" . $post_fields);
 
+// Use same cookie file so IG session/cookies persist
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://www.instagram.com/accounts/login/ajax/");
 curl_setopt($ch, CURLOPT_POST, true);
@@ -112,52 +118,68 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
+curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+
 $response = curl_exec($ch);
+if ($response === false) {
+    $err = curl_error($ch);
+    curl_close($ch);
+    log_debug("Login curl failed: $err");
+    echo json_encode(['status' => 'error', 'message' => 'Network error contacting Instagram', 'details' => $err]);
+    exit;
+}
 
 $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
 $header = substr($response, 0, $header_size);
 $body = substr($response, $header_size);
-
-preg_match('/sessionid=([^;]+)/', $header, $session_matches);
-$sessionid = $session_matches[1] ?? '';
-
+$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 log_debug("Login response headers:\n" . $header);
-log_debug("Login response body (first 500 chars):\n" . substr($body, 0, 500));
-log_debug("Session ID: $sessionid");
+log_debug("Login response body (first 1000 chars):\n" . substr($body, 0, 1000));
 
-// --- Normalize instagram response ---
+// Parse instagram JSON (if any)
 $instagram_json = json_decode($body, true);
 
-// Default result
+// Determine session id if IG set sessionid cookie
+$sessionid = null;
+foreach (explode("\r\n", $header) as $hline) {
+    if (stripos($hline, 'set-cookie:') === 0 && stripos($hline, 'sessionid=') !== false) {
+        if (preg_match('/sessionid=([^;]+)/i', $hline, $m)) { $sessionid = $m[1]; break; }
+    }
+}
+
+// Build normalized output
 $out = [
     'status' => $sessionid ? 'success' : 'error',
     'message' => $sessionid ? 'Login successful' : 'Login failed',
-    'session_id' => $sessionid,
+    'session_id' => $sessionid ?: '',
     'instagram_response' => $instagram_json,
     'headers' => $header
 ];
 
-// Handle two-factor required
-if (!$sessionid && !empty($instagram_json['two_factor_required'])) {
+// Two-factor required
+if (empty($sessionid) && !empty($instagram_json['two_factor_required'])) {
     $out['status'] = '2fa_required';
     $out['two_factor_info'] = $instagram_json['two_factor_info'] ?? null;
     $out['message'] = 'Two-factor authentication required';
     log_debug("Two-factor required: " . json_encode($out['two_factor_info']));
 }
-// Handle checkpoint / account recovery modal
-elseif (!$sessionid && (!empty($instagram_json['checkpoint_url']) || !empty($instagram_json['showAccountRecoveryModal']))) {
+// Checkpoint / account recovery flow
+elseif (empty($sessionid) && (!empty($instagram_json['checkpoint_url']) || !empty($instagram_json['showAccountRecoveryModal']))) {
     $out['status'] = 'checkpoint';
-    // If Instagram provides checkpoint_url, convert to absolute URL
     $checkpoint = $instagram_json['checkpoint_url'] ?? null;
     $out['verification_url'] = $checkpoint ? "https://www.instagram.com{$checkpoint}" : null;
     $out['message'] = 'Verification / checkpoint required';
     log_debug("Checkpoint required, verification_url: " . ($out['verification_url'] ?? 'none'));
 }
 
-// Echo final structured response
+// Return structured JSON
+header('Content-Type: application/json');
 echo json_encode($out);
 exit;
 ?>

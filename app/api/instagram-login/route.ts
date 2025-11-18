@@ -101,40 +101,49 @@ export async function POST(req: NextRequest) {
     const phpRawResponse = await phpRes.text();
     const phpHeaders = Object.fromEntries(phpRes.headers.entries());
 
-    // If you get a 403 from Cloudflare it is commonly Cloudflare Access / Tunnel auth / ingress issue
-    if (phpRes.status === 403) {
-      console.error("PHP endpoint returned 403 Forbidden", {
-        url: PHP_LOGIN_URL,
-        status: phpRes.status,
-        statusText: phpRes.statusText,
-        headers: phpHeaders,
-        body: phpRawResponse,
-      });
-      return NextResponse.json(
-        {
-          status: "error",
-          message:
-            "PHP server returned 403 Forbidden. Check Cloudflare tunnel / Access policies / hostname (see server logs).",
-          details: phpRawResponse?.slice?.(0, 100) || null,
-        },
-        { status: 502 }
-      );
-    }
-
+    // Parse PHP JSON response
     let loginResult: any;
     try {
       loginResult = JSON.parse(phpRawResponse);
     } catch (err) {
-      console.error("PHP response not JSON:", phpRawResponse);
+      console.error("Failed to parse PHP JSON response:", err, phpRawResponse);
       return NextResponse.json(
-        { status: "error", message: "PHP server error", details: phpRawResponse },
+        { status: "error", message: "Invalid response from PHP server", details: phpRawResponse },
         { status: 502 }
       );
     }
 
-    // If PHP responded with non-OK HTTP status, forward error
-    if (!phpRes.ok && loginResult) {
-      return NextResponse.json(loginResult, { status: 502 });
+    // Normalize Instagram-specific responses so frontend can handle checkpoint/2FA
+    const ig = loginResult.instagram_response || loginResult.parsed || null;
+
+    if (ig) {
+      // mark success when IG says authenticated
+      if (ig.authenticated === true) {
+        loginResult.status = "success";
+      }
+
+      // two-factor
+      if (!loginResult.status || loginResult.status === "error") {
+        if (ig.two_factor_required) {
+          loginResult.status = "2fa_required";
+          loginResult.two_factor_info = ig.two_factor_info || null;
+        } else if (
+          ig.message === "checkpoint_required" ||
+          !!ig.checkpoint_url ||
+          !!ig.showAccountRecoveryModal
+        ) {
+          loginResult.status = "checkpoint";
+          const cp = ig.checkpoint_url || ig.verification_url || null;
+          if (cp) {
+            // ensure absolute URL
+            loginResult.verification_url = cp.startsWith("http")
+              ? cp
+              : `https://www.instagram.com${cp}`;
+          } else {
+            loginResult.verification_url = null;
+          }
+        }
+      }
     }
 
     const responseTimestamp = new Date().toISOString();

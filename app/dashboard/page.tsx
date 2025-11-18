@@ -123,49 +123,40 @@ const DashboardPage = () => {
   // Login form: submit
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!loginUsername || !loginPassword) {
-      showToast("Please enter username and password.", "error");
-      return;
-    }
     setLoading(true);
+    setError("");
     try {
       const res = await fetch("/api/instagram-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: loginUsername, password: loginPassword }),
+        body: JSON.stringify({ username: loginUsername, password: loginPassword, otp: otpValue }),
       });
       const data = await res.json();
-      if (data.status === "2fa_required") {
-        setShowLoginForm(false);
-        setShowOtpOverlay(true);
-        showToast("Enter the code sent to your device.");
-      } else if (data.status === "checkpoint") {
-        setShowLoginForm(false);
-        setShowCheckpoint({ url: data.verification_url });
-        showToast("Verification required. Please follow the steps.");
-      } else if (data.status === "success") {
-        const token = localStorage.getItem("token");
-        await fetch("/api/instagram-accounts", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            instagram_username: loginUsername,
-            instagram_password: loginPassword,
-          }),
-        });
-        showToast("Account linked successfully!");
-        setShowLoginForm(false);
+      console.log("instagram-login response:", data); // debug
+
+      if (data.status === "success") {
+        showToast("Login successful", "success");
         fetchAccounts();
+        setShowLoginForm(false);
+      } else if (data.status === "2fa_required") {
+        setShowOtpOverlay(true);
+        showToast("Two-factor required. Enter code.", "error");
+      } else if (data.status === "checkpoint") {
+        // ensure login form closes so overlay is visible
+        setShowLoginForm(false);
+        setShowOtpOverlay(false);
+        setShowCheckpoint({ url: data.verification_url || "" });
+        showToast("Verification required. Complete it on Instagram.", "error");
       } else {
-        showToast(data.message || "Login failed.", "error");
+        setError(data.message || "Login failed");
+        showToast(data.message || "Login failed", "error");
       }
-    } catch {
-      showToast("Network error.", "error");
+    } catch (err) {
+      setError("Network error");
+      showToast("Network error", "error");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   // OTP overlay: submit
@@ -182,13 +173,15 @@ const DashboardPage = () => {
         body: JSON.stringify({ username: loginUsername, password: loginPassword, otp: otpValue }),
       });
       const data = await res.json();
+      console.log("instagram-login (otp) response:", data); // debug
       if (data.status === "success") {
         showToast("Account linked successfully!");
         setShowOtpOverlay(false);
         fetchAccounts();
       } else if (data.status === "checkpoint") {
         setShowOtpOverlay(false);
-        setShowCheckpoint({ url: data.verification_url });
+        setShowLoginForm(false);
+        setShowCheckpoint({ url: data.verification_url || "" });
         showToast("Verification required. Please follow the steps.");
       } else {
         showToast(data.message || "OTP failed.", "error");
@@ -457,29 +450,31 @@ const DashboardPage = () => {
 
       {/* Checkpoint/Verification Screen */}
       {showCheckpoint && (
-        <div className="verification-screen">
-          <div className="verification-content">
-            <h3>Verification Required</h3>
-            <p>
-              Instagram requires additional verification. Click the button below, complete the challenge, then return and try logging in again.
-            </p>
+        <div className="verification-screen" onClick={() => setShowCheckpoint(null)}>
+          <div className="verification-content" onClick={(e) => e.stopPropagation()}>
+            <img className="verification-icon" src="/assets/verify-icon.svg" alt="Verify" />
+            <h3>Verification required</h3>
+            <p>Complete Instagram verification, then retry login.</p>
 
             {showCheckpoint.url ? (
-              <a href={showCheckpoint.url} target="_blank" rel="noopener noreferrer" className="verify-button">
-                Open Instagram Verification
+              <a className="verify-button" href={showCheckpoint.url} target="_blank" rel="noopener noreferrer">
+                Open verification link
               </a>
             ) : (
-              <>
-                <p style={{ marginTop: 12 }}>
-                  No direct verification URL provided. Open Instagram app or https://instagram.com and follow account recovery steps for the user.
-                </p>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="verify-button">
-                  Open Instagram
-                </a>
-              </>
+              <a className="verify-button" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                Open Instagram
+              </a>
             )}
 
-            <button onClick={handleCheckpointFinish}>Try Again</button>
+            <div style={{ marginTop: 12 }}>
+              <button className="try-again-button" onClick={() => { setShowCheckpoint(null); setShowLoginForm(true); }}>
+                I completed verification — Retry
+              </button>
+            </div>
+
+            <p className="verification-note">
+              If the verification link doesn't work, open Instagram app or website and follow account recovery steps.
+            </p>
           </div>
         </div>
       )}
